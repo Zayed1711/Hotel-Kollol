@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+/* Editorial look, carried over from WayPoint's public site: light, calm, serif headlines with italic accents. */
+body {
+  background: #faf8f4;
+  color: #1c2430;
+  font-family: var(--font-body), "Noto Sans Bengali", system-ui, sans-serif;
+}
+.font-serif { font-family: var(--font-serif), Georgia, serif; }
+.font-display { font-family: var(--font-display), Impact, sans-serif; }
+.font-mono { font-family: var(--font-mono), ui-monospace, monospace; }
+
+/* Giant word behind the stage: content is rendered twice, so -50% loops seamlessly. */
+@keyframes sg-ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.sg-ticker { animation: sg-ticker 45s linear infinite; }
+
+/* Hero photo card: slow float with a slight 3D tilt. */
+@keyframes sg-float {
+  0%, 100% { transform: translateY(0) rotateX(6deg) rotateY(-10deg); }
+  50% { transform: translateY(-10px) rotateX(3deg) rotateY(-4deg); }
+}
+.sg-float { animation: sg-float 7s ease-in-out infinite; }
+
+@keyframes sg-fade-in { from { opacity: 0; transform: scale(0.94); } to { opacity: 1; transform: none; } }
+@keyframes sg-slide-next { from { opacity: 0; transform: translateX(70px) scale(0.94); } to { opacity: 1; transform: none; } }
+@keyframes sg-slide-prev { from { opacity: 0; transform: translateX(-70px) scale(0.94); } to { opacity: 1; transform: none; } }
+
+/* Arched window, the frame for every story photo. */
+.sg-arch { border-radius: 999px 999px 18px 18px; }
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sg-ticker, .sg-float { animation: none; }
+}

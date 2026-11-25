@@ -1,0 +1,12 @@
+node_modules
+.next
+next-env.d.ts
+*.tsbuildinfo
+.env*.local
+data/
+out/
+# Private: outreach lists, emails, videos, backups
+targets/
+demo/
+*.bak
+.claude/
