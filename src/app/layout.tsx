@@ -1,14 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { Anton, Cormorant_Garamond, Fraunces, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { Anton, Cormorant_Garamond, DM_Serif_Display, Fraunces, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import { HOTEL, THEME } from "@/lib/hotel";
 
 const fraunces = Fraunces({ subsets: ["latin"], style: ["normal", "italic"], variable: "--font-serif" });
 const cormorant = Cormorant_Garamond({ weight: ["500", "600"], subsets: ["latin"], style: ["normal", "italic"], variable: "--font-serif" });
+const dmSerif = DM_Serif_Display({ weight: "400", subsets: ["latin"], style: ["normal", "italic"], variable: "--font-serif" });
 const display = Anton({ weight: "400", subsets: ["latin"], variable: "--font-display" });
 const body = IBM_Plex_Sans({ weight: ["400", "500", "600"], subsets: ["latin"], variable: "--font-body" });
 const mono = IBM_Plex_Mono({ weight: ["400", "500"], subsets: ["latin"], variable: "--font-mono" });
-const serif = THEME.serif === "cormorant" ? cormorant : fraunces;
+const serif = { fraunces, cormorant, "dm-serif": dmSerif }[THEME.serif];
 
 export const metadata: Metadata = {
   title: `${HOTEL.name}, ${HOTEL.place}`,

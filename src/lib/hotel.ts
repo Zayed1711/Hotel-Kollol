@@ -1,10 +1,11 @@
 // Which hotel this build shows. Profiles live in src/hotels/; set NEXT_PUBLIC_HOTEL to a key below
 // (the GitHub Pages workflow derives it from the repo name, e.g. White_Orchid → white-orchid).
+import * as hotelKollol from "@/hotels/hotel-kollol";
 import * as hotelSeaShore from "@/hotels/hotel-sea-shore";
 import * as whiteOrchid from "@/hotels/white-orchid";
 import * as yourHotel from "@/hotels/your-hotel";
 
-const PROFILES = { "white-orchid": whiteOrchid, "hotel-sea-shore": hotelSeaShore, "your-hotel": yourHotel };
+const PROFILES = { "white-orchid": whiteOrchid, "hotel-sea-shore": hotelSeaShore, "hotel-kollol": hotelKollol, "your-hotel": yourHotel };
 const key = process.env.NEXT_PUBLIC_HOTEL || "white-orchid";
 if (!(key in PROFILES)) throw new Error(`NEXT_PUBLIC_HOTEL="${key}" is not one of: ${Object.keys(PROFILES).join(", ")}`);
 const P: Profile = PROFILES[key as keyof typeof PROFILES];
@@ -28,7 +29,7 @@ export type Room = {
 
 /** Site colours and headline font. Every colour the components use comes from here. */
 export type Theme = {
-  serif: "fraunces" | "cormorant";
+  serif: "fraunces" | "cormorant" | "dm-serif";
   paper: string; // page background
   sand: string; // soft panels
   ink: string; // body text
