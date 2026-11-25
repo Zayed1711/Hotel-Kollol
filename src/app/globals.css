@@ -2,8 +2,8 @@
 
 /* Editorial look, carried over from WayPoint's public site: light, calm, serif headlines with italic accents. */
 body {
-  background: #faf8f4;
-  color: #1c2430;
+  background: var(--c-paper);
+  color: var(--c-ink);
   font-family: var(--font-body), "Noto Sans Bengali", system-ui, sans-serif;
 }
 .font-serif { font-family: var(--font-serif), Georgia, serif; }

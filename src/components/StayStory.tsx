@@ -17,7 +17,7 @@ const easeInOut = (t: number) => (t < 0.5 ? 2 * t * t : 1 - (-2 * t + 2) ** 2 / 
 
 const headline = (
   <h2 className="font-serif text-center text-2xl leading-tight text-slate-900 sm:text-5xl">
-    Your stay, one <em className="text-[#2f6f73]">tide</em> at a time.
+    Your stay, one <em className="text-[var(--c-accent)]">tide</em> at a time.
   </h2>
 );
 
@@ -67,7 +67,7 @@ export function StayStory() {
     <section ref={ref} aria-label={`Your stay at ${HOTEL.name}`} style={{ height: `${(n + FINALE_LENGTH + 1) * 100}vh` }} className="relative">
       <div
         className="sticky top-0 h-[100svh] overflow-hidden transition-colors duration-700"
-        style={{ backgroundColor: current < n ? STORY[current]!.bg : "#e9e2d6" }}
+        style={{ backgroundColor: current < n ? STORY[current]!.bg : "var(--c-sand)" }}
       >
         <p
           key={current}
@@ -157,7 +157,7 @@ export function StayStory() {
 /** For guests who turn off motion: the same story as a calm stack. */
 function StaticStory() {
   return (
-    <section aria-label={`Your stay at ${HOTEL.name}`} className="bg-[#ece6da] px-4 py-16">
+    <section aria-label={`Your stay at ${HOTEL.name}`} className="bg-[var(--c-sand)] px-4 py-16">
       {headline}
       <ol className="mx-auto mt-10 grid max-w-5xl gap-10 sm:grid-cols-2">
         {STORY.map((step) => (

@@ -1,5 +1,5 @@
 // One white-label demo hotel for pitching any Cox's Bazar hotel. Everything hotel-specific lives in this file.
-import type { Room } from "@/lib/hotel";
+import type { Front, Room, Theme } from "@/lib/hotel";
 
 // Photos are free Unsplash images (unsplash.com/license). The Seagull version is in hotel.seagull.ts.bak.
 const u = (id: string) => `https://images.unsplash.com/photo-${id}?w=1200&q=75&auto=format&fit=crop`;
@@ -128,3 +128,17 @@ export const OFFERS = [
   },
 ];
 
+export const THEME: Theme = {
+  serif: "fraunces",
+  paper: "#faf8f4",
+  sand: "#ece6da",
+  ink: "#1c2430",
+  accent: "#2f6f73",
+  accentDark: "#265c60",
+  onAccent: "#f4efe6",
+  deep: "#1f2c45",
+  deepText: "#efe4cf",
+  warm: "#b4574b",
+};
+
+export const FRONT: Front = null;

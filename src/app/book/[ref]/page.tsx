@@ -27,7 +27,7 @@ export default async function BookingPage({ params, searchParams }: { params: Pr
   const expired = b.status === "held" && b.hold_expires_at <= Date.now();
 
   const summary = (
-    <aside className="h-fit rounded-2xl bg-[#ece6da] p-6">
+    <aside className="h-fit rounded-2xl bg-[var(--c-sand)] p-6">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={room.photo} alt="" className="h-36 w-full rounded-xl object-cover" />
       <h2 className="font-serif mt-4 text-xl text-slate-900">{room.name}</h2>
@@ -44,9 +44,9 @@ export default async function BookingPage({ params, searchParams }: { params: Pr
       <BookShell step={4}>
         <div className="grid gap-8 md:grid-cols-[1fr_320px]">
           <section className="rounded-2xl bg-white p-6 ring-1 ring-slate-200 sm:p-8">
-            <CheckCircle2 size={36} className="text-[#2f6f73]" aria-hidden="true" />
+            <CheckCircle2 size={36} className="text-[var(--c-accent)]" aria-hidden="true" />
             <h1 className="font-serif mt-4 text-3xl text-slate-900 sm:text-4xl">
-              You&apos;re <em className="text-[#2f6f73]">booked</em>.
+              You&apos;re <em className="text-[var(--c-accent)]">booked</em>.
             </h1>
             <p className="mt-2 text-slate-600">See you in Cox&apos;s Bazar, {b.name.split(" ")[0]}.</p>
             <p className="mt-6 text-xs tracking-[0.25em] text-slate-500 uppercase">Booking reference</p>

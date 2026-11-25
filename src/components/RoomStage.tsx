@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { HOTEL, ROOMS, bdt, type Room } from "@/lib/hotel";
+import { FRONT, HOTEL, ROOMS, bdt, type Room } from "@/lib/hotel";
 import { BookingForm } from "./BookingForm";
 
 /**
@@ -22,6 +22,7 @@ export function RoomStage({ index, onChange }: { index: number; onChange: (i: nu
   const ticker = Array.from({ length: 6 }, () => room.word).join("  ·  ") + "  ·  ";
   const prev = ROOMS[(index - 1 + count) % count]!;
   const next = ROOMS[(index + 1) % count]!;
+  const Heading = FRONT ? "h2" : "h1"; // the front photo carries the page title when there is one
 
   return (
     <section
@@ -56,9 +57,9 @@ export function RoomStage({ index, onChange }: { index: number; onChange: (i: nu
 
       <div className="relative mx-auto max-w-6xl px-4 pt-24 pb-10 sm:pt-28 sm:pb-14">
         <p className="text-center text-xs font-medium tracking-[0.3em] uppercase opacity-80">On Cox&apos;s Bazar sea beach</p>
-        <h1 className="font-serif mx-auto mt-3 max-w-2xl text-center text-3xl leading-tight sm:text-5xl">
+        <Heading className="font-serif mx-auto mt-3 max-w-2xl text-center text-3xl leading-tight sm:text-5xl">
           Choose your <em>view</em>.
-        </h1>
+        </Heading>
 
         <div
           className="relative mx-auto mt-6 flex h-[250px] cursor-grab touch-pan-y items-center justify-center select-none active:cursor-grabbing sm:mt-8 sm:h-[340px]"
@@ -126,7 +127,7 @@ function ArrowButton({ label, onClick, children }: { label: string; onClick: () 
 function PhotoCard({ room, still = false }: { room: Room; still?: boolean }) {
   return (
     <div style={{ perspective: "900px" }}>
-      <div className={`rounded-[22px] bg-[#fbf7f0] p-2 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.55)] ${still ? "" : "sg-float"}`}>
+      <div className={`rounded-[22px] bg-[var(--c-paper)] p-2 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.55)] ${still ? "" : "sg-float"}`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={room.photo} alt={still ? "" : `${room.name} at ${HOTEL.name}`} className="h-[200px] w-[300px] rounded-[16px] object-cover sm:h-[280px] sm:w-[440px]" />
       </div>

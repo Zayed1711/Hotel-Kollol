@@ -92,7 +92,7 @@ export function ChatWidget() {
         aria-expanded={open}
         aria-controls="seagull-chat"
         aria-label={open ? "Close chat" : "Chat with us"}
-        className="fixed right-4 bottom-24 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#2f6f73] text-white shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] transition hover:bg-[#265c60] sm:right-6 sm:bottom-6"
+        className="fixed right-4 bottom-24 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[var(--c-accent)] text-white shadow-[0_15px_30px_-10px_rgba(0,0,0,0.5)] transition hover:bg-[var(--c-accent-dark)] sm:right-6 sm:bottom-6"
       >
         {open ? <X size={22} aria-hidden="true" /> : <MessageSquareText size={22} aria-hidden="true" />}
       </button>
@@ -103,9 +103,9 @@ export function ChatWidget() {
           role="dialog"
           aria-label={`Chat with ${HOTEL.name}`}
           onKeyDown={(e) => e.key === "Escape" && setOpen(false)}
-          className="fixed inset-x-3 bottom-40 z-40 flex max-h-[min(600px,calc(100svh-12rem))] flex-col overflow-hidden rounded-3xl bg-[#faf8f4] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.45)] ring-1 ring-slate-200 sm:inset-x-auto sm:right-6 sm:bottom-24 sm:w-[380px]"
+          className="fixed inset-x-3 bottom-40 z-40 flex max-h-[min(600px,calc(100svh-12rem))] flex-col overflow-hidden rounded-3xl bg-[var(--c-paper)] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.45)] ring-1 ring-slate-200 sm:inset-x-auto sm:right-6 sm:bottom-24 sm:w-[380px]"
         >
-          <div className="bg-[#1f2c45] px-5 py-4 text-[#efe4cf]">
+          <div className="bg-[var(--c-deep)] px-5 py-4 text-[var(--c-deep-text)]">
             <p className="font-serif text-lg leading-tight">{HOTEL.name} concierge</p>
             <p className="text-xs opacity-80">Here to help you plan your stay</p>
           </div>
@@ -152,7 +152,7 @@ export function ChatWidget() {
               maxLength={1000}
               placeholder="Tell us about your trip…"
               aria-label="Your message"
-              className="min-w-0 flex-1 rounded-full bg-slate-100 px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-[#2f6f73]"
+              className="min-w-0 flex-1 rounded-full bg-slate-100 px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-[var(--c-accent)]"
             />
             <button type="submit" disabled={busy || !input.trim()} aria-label="Send" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-slate-900 text-white disabled:opacity-40">
               <Send size={16} aria-hidden="true" />
@@ -204,7 +204,7 @@ function DatePicker({ onSubmit }: { onSubmit: (stay: Stay) => void }) {
           ))}
         </select>
       </label>
-      <button type="submit" className="self-end rounded-lg bg-[#2f6f73] px-3 py-2 text-sm font-medium text-white hover:bg-[#265c60]">
+      <button type="submit" className="self-end rounded-lg bg-[var(--c-accent)] px-3 py-2 text-sm font-medium text-white hover:bg-[var(--c-accent-dark)]">
         Show free rooms
       </button>
     </form>

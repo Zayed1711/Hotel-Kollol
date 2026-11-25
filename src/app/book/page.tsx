@@ -23,7 +23,7 @@ export default async function BookPage({ searchParams }: { searchParams: Promise
   return (
     <BookShell step={chosen ? 2 : 1}>
       <h1 className="font-serif text-3xl text-slate-900 sm:text-4xl">
-        Choose your <em className="text-[#2f6f73]">room</em>
+        Choose your <em className="text-[var(--c-accent)]">room</em>
       </h1>
       <div className="-mx-4 sm:mx-0 [&_form]:mt-5 [&_form]:max-w-none [&_form]:shadow-none [&_form]:ring-1 [&_form]:ring-slate-200">
         <BookingForm roomId={p.room} initial={{ checkin: p.checkin, checkout: p.checkout, guests: String(guests) }} />
@@ -39,7 +39,7 @@ export default async function BookPage({ searchParams }: { searchParams: Promise
             return (
               <li
                 key={room.id}
-                className={`grid overflow-hidden rounded-2xl bg-white ring-1 sm:grid-cols-[260px_1fr_auto] ${selected ? "ring-2 ring-[#2f6f73]" : "ring-slate-200"}`}
+                className={`grid overflow-hidden rounded-2xl bg-white ring-1 sm:grid-cols-[260px_1fr_auto] ${selected ? "ring-2 ring-[var(--c-accent)]" : "ring-slate-200"}`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={room.photo} alt="" className="h-44 w-full object-cover sm:h-full" />
@@ -65,7 +65,7 @@ export default async function BookPage({ searchParams }: { searchParams: Promise
                     <a
                       href={link(room.id)}
                       aria-current={selected ? "true" : undefined}
-                      className={`rounded-full px-5 py-2.5 text-sm font-medium ${selected ? "bg-[#2f6f73] text-white" : "bg-slate-900 text-white hover:bg-slate-700"}`}
+                      className={`rounded-full px-5 py-2.5 text-sm font-medium ${selected ? "bg-[var(--c-accent)] text-white" : "bg-slate-900 text-white hover:bg-slate-700"}`}
                     >
                       {selected ? "Selected" : "Select"}
                     </a>
@@ -101,7 +101,7 @@ export default async function BookPage({ searchParams }: { searchParams: Promise
             </button>
           </form>
 
-          <aside className="h-fit rounded-2xl bg-[#ece6da] p-6">
+          <aside className="h-fit rounded-2xl bg-[var(--c-sand)] p-6">
             <h2 className="font-serif text-xl text-slate-900">{chosen.room.name}</h2>
             <p className="mt-1 text-sm text-slate-600">
               {p.checkin} → {p.checkout} · {guests} {guests === 1 ? "guest" : "guests"}

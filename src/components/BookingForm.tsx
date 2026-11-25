@@ -69,7 +69,7 @@ export function BookingForm({ roomId, initial }: { roomId?: string; initial?: { 
 
 function Field({ label, icon, wide, children }: { label: string; icon: React.ReactNode; wide?: boolean; children: React.ReactNode }) {
   return (
-    <label className={`flex flex-col gap-1 bg-[#fbf8f3] px-4 py-3 ${wide ? "col-span-2 sm:col-span-1" : ""}`}>
+    <label className={`flex flex-col gap-1 bg-[var(--c-paper)] px-4 py-3 ${wide ? "col-span-2 sm:col-span-1" : ""}`}>
       <span className="flex items-center gap-1.5 text-[10px] font-medium tracking-[0.2em] text-slate-500 uppercase">
         {icon}
         {label}

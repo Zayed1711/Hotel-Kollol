@@ -26,6 +26,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: rm -rf src/app/api src/app/book
+      # The repo name picks the hotel profile: White_Orchid → white-orchid, Hotel-Sea-Shore → hotel-sea-shore.
+      - run: echo "NEXT_PUBLIC_HOTEL=$(echo '${{ github.event.repository.name }}' | tr 'A-Z_' 'a-z-')" >> "$GITHUB_ENV"
       - run: npm run build
         env:
           STATIC: "1"

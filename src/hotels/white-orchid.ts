@@ -1,7 +1,7 @@
 // Hotel White Orchid, Kolatoli, Cox's Bazar. Facts from their Booking.com and Google Maps listings (Nov 2026).
 // Photos are the hotel's own, served from their Booking.com gallery (signed URLs; they stop working if the hotel removes the photo).
 // shortcut: room names, counts, rates and offers are samples (the hotel publishes none online); swap in theirs when they reply.
-import type { Room } from "@/lib/hotel";
+import type { Front, Room, Theme } from "@/lib/hotel";
 
 const b = (path: string) => `https://cf.bstatic.com/xdata/images/hotel/max1280x900/${path}&o=`;
 const P = {
@@ -142,3 +142,18 @@ export const OFFERS = [
     photo: P.twin2,
   },
 ];
+
+export const THEME: Theme = {
+  serif: "fraunces",
+  paper: "#faf8f4",
+  sand: "#ece6da",
+  ink: "#1c2430",
+  accent: "#2f6f73",
+  accentDark: "#265c60",
+  onAccent: "#f4efe6",
+  deep: "#1f2c45",
+  deepText: "#efe4cf",
+  warm: "#b4574b",
+};
+
+export const FRONT: Front = null;

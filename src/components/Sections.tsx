@@ -9,7 +9,7 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 
 export function Facts() {
   return (
-    <section aria-label="At a glance" className="border-y border-slate-200 bg-[#faf8f4]">
+    <section aria-label="At a glance" className="border-y border-slate-200 bg-[var(--c-paper)]">
       <dl className="mx-auto grid max-w-6xl grid-cols-2 gap-y-8 px-4 py-10 sm:grid-cols-4">
         {FACTS.map(([n, label]) => (
           <div key={label} className="text-center">
@@ -28,7 +28,7 @@ export function Offers() {
     <section id="offers" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-20">
       <Eyebrow>Offers</Eyebrow>
       <h2 className="font-serif mt-2 text-3xl text-slate-900 sm:text-5xl">
-        Made for <em className="text-[#b4574b]">two</em>, or for the whole table.
+        Made for <em className="text-[var(--c-warm)]">two</em>, or for the whole table.
       </h2>
       <div className="mt-10 grid gap-6 md:grid-cols-2">
         {OFFERS.map((o) => (
@@ -38,7 +38,7 @@ export function Offers() {
             <div className="flex flex-col p-6">
               <h3 className="font-serif text-2xl text-slate-900">{o.name}</h3>
               <p className="mt-1 text-sm text-slate-500">{o.unit}</p>
-              <p className="font-serif mt-3 text-3xl text-[#b4574b]">{o.price}</p>
+              <p className="font-serif mt-3 text-3xl text-[var(--c-warm)]">{o.price}</p>
               <ul className="mt-4 space-y-1.5 text-sm text-slate-600">
                 {o.points.map((p) => (
                   <li key={p} className="flex gap-2">
@@ -62,8 +62,9 @@ export function Offers() {
 }
 
 export function Dining() {
+  if (!DINING.length) return null;
   return (
-    <section id="dining" className="scroll-mt-20 bg-[#1f2c45] py-20 text-[#efe4cf]">
+    <section id="dining" className="scroll-mt-20 bg-[var(--c-deep)] py-20 text-[var(--c-deep-text)]">
       <div className="mx-auto max-w-6xl px-4">
         <p className="font-mono text-[11px] tracking-[0.3em] uppercase opacity-60">Dining</p>
         <h2 className="font-serif mt-2 text-3xl sm:text-5xl">
@@ -91,7 +92,7 @@ export function Events() {
       <Eyebrow>Weddings, conferences, celebrations</Eyebrow>
       <div className="mt-2 flex flex-wrap items-end justify-between gap-4">
         <h2 className="font-serif text-3xl text-slate-900 sm:text-5xl">
-          Room for <em className="text-[#2f6f73]">everyone</em>.
+          Room for <em className="text-[var(--c-accent)]">everyone</em>.
         </h2>
         <a
           href={`mailto:${CONTACT.sales}?subject=${encodeURIComponent("Event enquiry")}`}
@@ -117,7 +118,7 @@ export function Events() {
 
 export function Footer() {
   return (
-    <footer id="contact" className="scroll-mt-20 bg-[#2f6f73] px-4 pt-16 pb-28 text-[#f4efe6] sm:pb-16">
+    <footer id="contact" className="scroll-mt-20 bg-[var(--c-accent)] px-4 pt-16 pb-28 text-[var(--c-on-accent)] sm:pb-16">
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <p className="font-serif text-3xl">{HOTEL.name}</p>
@@ -129,12 +130,12 @@ export function Footer() {
         <ul className="space-y-3 text-sm">
           <li className="flex gap-2.5"><MapPin size={16} className="mt-0.5 shrink-0" aria-hidden="true" />{CONTACT.address}</li>
           <li className="flex gap-2.5"><Phone size={16} className="mt-0.5 shrink-0" aria-hidden="true" /><a href={`tel:${CONTACT.hotline.replace(/[^+\d]/g, "")}`}>{CONTACT.hotline}</a></li>
-          <li className="flex gap-2.5"><Mail size={16} className="mt-0.5 shrink-0" aria-hidden="true" /><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></li>
+          {CONTACT.email && <li className="flex gap-2.5"><Mail size={16} className="mt-0.5 shrink-0" aria-hidden="true" /><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></li>}
         </ul>
         <div>
           <a
             href={wa(`Hi, I'd like to ask about a stay at ${HOTEL.name}.`)}
-            className="inline-flex items-center gap-2 rounded-full bg-[#f4efe6] px-5 py-3 text-sm font-medium text-[#1f2c45] transition hover:bg-white"
+            className="inline-flex items-center gap-2 rounded-full bg-[var(--c-on-accent)] px-5 py-3 text-sm font-medium text-[var(--c-deep)] transition hover:bg-white"
           >
             <MessageCircle size={16} aria-hidden="true" /> Chat on WhatsApp
           </a>

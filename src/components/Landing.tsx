@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { MessageCircle } from "lucide-react";
-import { CONTACT, HALLS, HOTEL, ROOMS, bdt } from "@/lib/hotel";
+import { CONTACT, DINING, HALLS, HOTEL, ROOMS, bdt } from "@/lib/hotel";
+import { FrontHero } from "./FrontHero";
 import { ChatWidget } from "./ChatWidget";
 import { RoomStage } from "./RoomStage";
 import { StayStory } from "./StayStory";
@@ -14,7 +15,7 @@ const NAV = [
   ["Events", "#events"],
   ["Offers", "#offers"],
   ["Contact", "#contact"],
-].filter(([label]) => label !== "Events" || HALLS.length);
+].filter(([label]) => (label !== "Events" || HALLS.length) && (label !== "Dining" || DINING.length));
 
 /** The chosen room colours the header and carries into the phone's booking bar. */
 export function Landing() {
@@ -42,6 +43,7 @@ export function Landing() {
         </div>
       </header>
 
+      <FrontHero />
       <div id="rooms">
         <RoomStage index={index} onChange={setIndex} />
       </div>
@@ -54,7 +56,7 @@ export function Landing() {
       <ChatWidget />
 
       {/* Phones: price and the two ways to book, always in reach. */}
-      <div className="fixed inset-x-0 bottom-0 z-30 border-t border-slate-200 bg-[#faf8f4]/95 px-4 py-3 backdrop-blur sm:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-30 border-t border-slate-200 bg-[var(--c-paper)]/95 px-4 py-3 backdrop-blur sm:hidden">
         <div className="flex items-center gap-3">
           <div className="min-w-0 flex-1">
             <p className="truncate text-xs text-slate-500">{room.name}</p>

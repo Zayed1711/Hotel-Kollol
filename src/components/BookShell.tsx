@@ -7,8 +7,8 @@ const STEPS = ["Room", "Details", "Pay"];
 /** Header and step tracker shared by the booking pages. `step` is 1-based; 4 means done. */
 export function BookShell({ step, children }: { step: number; children: React.ReactNode }) {
   return (
-    <div className="min-h-screen bg-[#faf8f4]">
-      <header className="border-b border-slate-200 bg-[#faf8f4]">
+    <div className="min-h-screen bg-[var(--c-paper)]">
+      <header className="border-b border-slate-200 bg-[var(--c-paper)]">
         <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-4">
           <a href="/" className="leading-none text-slate-900">
             <span className="font-serif block text-2xl">{HOTEL.name}</span>
@@ -22,7 +22,7 @@ export function BookShell({ step, children }: { step: number; children: React.Re
                 <li key={label} aria-current={n === step ? "step" : undefined} className={`flex items-center gap-1.5 ${n === step ? "text-slate-900" : "text-slate-400"}`}>
                   <span
                     className={`flex h-6 w-6 items-center justify-center rounded-full text-[11px] ${
-                      done ? "bg-[#2f6f73] text-white" : n === step ? "bg-slate-900 text-white" : "border border-slate-300"
+                      done ? "bg-[var(--c-accent)] text-white" : n === step ? "bg-slate-900 text-white" : "border border-slate-300"
                     }`}
                   >
                     {done ? <Check size={13} aria-hidden="true" /> : n}
