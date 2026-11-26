@@ -1,7 +1,7 @@
 // Hotel Kollol by J&Z Group, Laboni Point, Cox's Bazar. Facts from their Booking.com and Google Maps listings (Nov 2026).
 // Photos are the hotel's own, served from their Booking.com gallery (signed URLs; they stop working if the hotel removes the photo).
 // Room types and "from" rates are their Booking.com rooms and prices for 9 Dec 2026; counts and offers are samples.
-import type { Front, Room, Theme } from "@/lib/hotel";
+import type { Front, LiveMusic, Room, Theme } from "@/lib/hotel";
 
 const b = (path: string) => `https://cf.bstatic.com/xdata/images/hotel/max1280x900/${path}&o=`;
 const P = {
@@ -97,16 +97,16 @@ export const ROOMS: Room[] = [
 export const STORY = [
   { word: "Arrive", title: "On the beach at Laboni Point", text: "A few steps to the sand, and about 2 km from the airport. We can pick you up.", photo: P.terrace, bg: "#e8efe3" },
   { word: "Swim", title: "A pool open all year", text: "Laze by the water, grab a drink at the pool bar, then head to the beach.", photo: P.pool, bg: "#e1ecef" },
-  { word: "Savour", title: "Dinner in the garden", text: "Chinese, Indian, American and Bangladeshi food, halal and vegetarian, served around our boat in the garden.", photo: P.boatGarden, bg: "#efe7d6" },
+  { word: "Savour", title: "Dinner in the garden", text: "Kasundi Restaurant serves Chinese, Indian, American and Bangladeshi food, halal and vegetarian, around our boat in the garden.", photo: P.boatGarden, bg: "#efe7d6" },
   { word: "Celebrate", title: "Live music nights", text: "Songs on the boat stage and long tables under the lights.", photo: P.music, bg: "#f3e2d2" },
 ];
 export const FINALE_PHOTO = P.lawnNight;
 
 export const DINING = [
-  { name: "Garden Restaurant", kind: "Chinese, Indian, American & local · halal", photo: P.boatGarden },
+  { name: "Kasundi Restaurant", kind: "Chinese, Indian, American & local · halal", photo: P.boatGarden },
   { name: "From the Grill", kind: "Fresh fish over charcoal", photo: P.grill },
   { name: "Pool Bar", kind: "Drinks by the water", photo: P.poolSide },
-  { name: "Live Music", kind: "On the boat stage", photo: P.music },
+  { name: "Live Music at Kasundi", kind: "Thu to Sat · book a table below", photo: P.music },
 ];
 
 export const HALLS: { name: string; capacity: string; use: string; photo: string }[] = [];
@@ -123,7 +123,7 @@ export const OFFERS = [
     name: "Couple's Sea View",
     price: "৳14,499",
     unit: "3 days, 2 nights",
-    points: ["Deluxe Double with sea-view balcony", "Dinner in the garden restaurant", "Live music night"],
+    points: ["Deluxe Double with sea-view balcony", "Dinner at Kasundi Restaurant", "Live music night"],
     photo: P.loungers,
   },
 ];
@@ -147,4 +147,14 @@ export const FRONT: Front = {
   eyebrow: "Laboni Point · Sea Beach Road · Cox's Bazar",
   title: "Green walls, blue pool, the sea next door.",
   text: "A beachfront hotel with a pool open all year, live music nights and dinner in the garden. Book direct and pay a 30% deposit by bKash or Nagad.",
+};
+
+// shortcut: Thursday to Saturday at 8 pm is a sample schedule; set the real nights when the F&B team confirms them.
+export const LIVE_MUSIC: LiveMusic = {
+  venue: "Kasundi Restaurant",
+  weekdays: [4, 5, 6],
+  time: "8:00 pm",
+  text: "The most talked-about nights in Cox's Bazar: songs on the boat stage, dinner under the garden lights. Tables go fast, so book yours here.",
+  photo: P.music,
+  maxGuests: 12,
 };

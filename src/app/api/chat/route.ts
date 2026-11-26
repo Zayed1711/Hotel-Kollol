@@ -1,4 +1,4 @@
-import { CONTACT, DINING, FACTS, HALLS, HOTEL, OFFERS, POLICIES, ROOMS, bdt } from "@/lib/hotel";
+import { CONTACT, DINING, FACTS, HALLS, HOTEL, LIVE_MUSIC, OFFERS, POLICIES, ROOMS, bdt } from "@/lib/hotel";
 
 const OLLAMA = "http://127.0.0.1:11434/api/chat";
 const MODEL = process.env.OLLAMA_MODEL ?? "qwen2.5:1.5b";
@@ -31,7 +31,8 @@ ${ROOMS.map((r) => `- ${r.name}: ${r.view}, sleeps up to ${r.maxGuests}, from ${
 For 3 guests: ${ROOMS.filter((r) => r.maxGuests >= 3).map((r) => r.name).join(" or ")}. For 4 guests: ${ROOMS.filter((r) => r.maxGuests >= 4).map((r) => r.name).join(" or ")}. Never suggest a room for more guests than it sleeps.
 Booking online: pay a 30% deposit by bKash, Nagad or card; the rest at the hotel.
 ${DINING.length ? `Dining: ${DINING.map((d) => `${d.name} (${d.kind})`).join(", ")}.` : "No restaurant at the hotel."}
-Facilities: ${HOTEL.facilities}.
+Facilities: ${HOTEL.facilities}.${LIVE_MUSIC ? `
+Live music at ${LIVE_MUSIC.venue}: ${LIVE_MUSIC.weekdays.map((d) => ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][d]).join(", ")} from ${LIVE_MUSIC.time}. Guests book a table in the Live music section of this website.` : ""}
 ${HALLS.length ? `Events: ${HALLS.map((h) => `${h.name} (${h.capacity}; ${h.use})`).join("; ")}. Event quotes: ${CONTACT.sales}.` : `No event halls; for events, call ${CONTACT.hotline}.`}
 ${Object.values(POLICIES).join(" ")}
 Not known (always tell guests to call): ${UNKNOWN_LABELS.filter((l) => !POLICIES[l]).join(", ")}.

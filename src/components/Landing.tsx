@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { MessageCircle } from "lucide-react";
-import { CONTACT, DINING, HALLS, HOTEL, ROOMS, bdt } from "@/lib/hotel";
+import { CONTACT, DINING, HALLS, HOTEL, LIVE_MUSIC, ROOMS, bdt } from "@/lib/hotel";
+import { LiveMusic } from "./LiveMusic";
 import { FrontHero } from "./FrontHero";
 import { ChatWidget } from "./ChatWidget";
 import { RoomStage } from "./RoomStage";
@@ -12,10 +13,11 @@ import { Dining, Events, Facts, Footer, Offers } from "./Sections";
 const NAV = [
   ["Rooms", "#rooms"],
   ["Dining", "#dining"],
+  ["Live music", "#live-music"],
   ["Events", "#events"],
   ["Offers", "#offers"],
   ["Contact", "#contact"],
-].filter(([label]) => (label !== "Events" || HALLS.length) && (label !== "Dining" || DINING.length));
+].filter(([label]) => (label !== "Events" || HALLS.length) && (label !== "Dining" || DINING.length) && (label !== "Live music" || LIVE_MUSIC));
 
 /** The chosen room colours the header and carries into the phone's booking bar. */
 export function Landing() {
@@ -51,6 +53,7 @@ export function Landing() {
       <StayStory />
       <Offers />
       <Dining />
+      <LiveMusic />
       <Events />
       <Footer />
       <ChatWidget />

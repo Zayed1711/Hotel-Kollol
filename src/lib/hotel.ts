@@ -10,7 +10,7 @@ const key = process.env.NEXT_PUBLIC_HOTEL || "white-orchid";
 if (!(key in PROFILES)) throw new Error(`NEXT_PUBLIC_HOTEL="${key}" is not one of: ${Object.keys(PROFILES).join(", ")}`);
 const P: Profile = PROFILES[key as keyof typeof PROFILES];
 
-export const { HOTEL, CONTACT, POLICIES, FACTS, ROOMS, STORY, FINALE_PHOTO, DINING, HALLS, OFFERS, THEME, FRONT } = P;
+export const { HOTEL, CONTACT, POLICIES, FACTS, ROOMS, STORY, FINALE_PHOTO, DINING, HALLS, OFFERS, THEME, FRONT, LIVE_MUSIC } = P;
 
 export type Room = {
   id: string; // keep "deluxe" and "super-deluxe": bookings and the demo recorder use them
@@ -41,6 +41,16 @@ export type Theme = {
   warm: string; // italic highlights
 };
 
+/** Live-music nights guests can reserve a table for over WhatsApp. */
+export type LiveMusic = {
+  venue: string;
+  weekdays: number[]; // 0 = Sunday
+  time: string;
+  text: string;
+  photo: string;
+  maxGuests: number;
+} | null;
+
 /** A building-front photo shown first, before the rooms. */
 export type Front = { photo: string; eyebrow: string; title: string; text: string } | null;
 
@@ -57,6 +67,7 @@ type Profile = {
   OFFERS: { name: string; price: string; unit: string; points: string[]; photo: string }[];
   THEME: Theme;
   FRONT: Front;
+  LIVE_MUSIC: LiveMusic;
 };
 
 export const bdt = (n: number) => `৳${n.toLocaleString("en-IN")}`;

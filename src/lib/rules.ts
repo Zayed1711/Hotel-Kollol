@@ -58,3 +58,12 @@ export function normalisePhone(raw: string) {
   const digits = raw.replace(/[\s()-]/g, "").replace(/^\+?88/, "");
   return /^01[3-9]\d{8}$/.test(digits) ? `+88${digits}` : null;
 }
+
+/** The next `count` dates (YYYY-MM-DD) from `today` on, that fall on one of `weekdays` (0 = Sunday). */
+export function nextNights(today: string, weekdays: number[], count: number) {
+  const out: string[] = [];
+  for (let d = today; out.length < count && weekdays.length; d = addDays(d, 1)) {
+    if (weekdays.includes(new Date(toMs(d)).getUTCDay())) out.push(d);
+  }
+  return out;
+}

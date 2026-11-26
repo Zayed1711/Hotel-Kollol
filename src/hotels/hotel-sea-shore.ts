@@ -2,7 +2,7 @@
 // Photos: the building front is the hotel's own Google Maps cover; rooms are the hotel's Expedia photos;
 // beach scenes are free Unsplash images (unsplash.com/license) of Cox's Bazar, not of the hotel.
 // shortcut: room names (except the sea-view double), counts, rates and offers are samples; swap in theirs when they reply.
-import type { Front, Room, Theme } from "@/lib/hotel";
+import type { Front, LiveMusic, Room, Theme } from "@/lib/hotel";
 
 const x = (id: string) => `https://images.trvl-media.com/lodging/130000000/129770000/129762600/129762546/${id}.jpg?impolicy=resizecrop&rw=1200`;
 const u = (id: string) => `https://images.unsplash.com/photo-${id}?w=1200&q=75&auto=format&fit=crop`;
@@ -158,3 +158,5 @@ export const FRONT: Front = {
   title: "Your light by the sea.",
   text: "A small hotel one minute from Kolatoli Beach, with 20 cool rooms, fast Wi-Fi and a front desk that's always awake.",
 };
+
+export const LIVE_MUSIC: LiveMusic = null;

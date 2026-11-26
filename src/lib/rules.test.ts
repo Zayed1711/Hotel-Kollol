@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { normalisePhone, quote, roomsLeft, stayError } from "./rules.ts";
+import { nextNights, normalisePhone, quote, roomsLeft, stayError } from "./rules.ts";
 
 test("busiest night decides what is left, not the number of overlapping bookings", () => {
   // Two bookings that overlap the stay but not each other use one room on any night.
@@ -33,4 +33,10 @@ test("phone numbers", () => {
   assert.equal(normalisePhone("+880 1766 666530"), "+8801766666530");
   assert.equal(normalisePhone("0176666653"), null);
   assert.equal(normalisePhone("01266666530"), null);
+});
+
+test("live music nights", () => {
+  // 2026-11-26 is a Thursday.
+  assert.deepEqual(nextNights("2026-11-26", [4, 5, 6], 4), ["2026-11-26", "2026-11-27", "2026-11-28", "2026-12-03"]);
+  assert.deepEqual(nextNights("2026-11-26", [], 3), []);
 });
